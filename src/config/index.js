@@ -19,13 +19,3 @@ export const config = {
     maxSearchLimit: parseInt(process.env.MAX_SEARCH_LIMIT, 10) || 1000
   }
 };
-
-import { Router } from 'express';
-import pokemonRoutes from '../routes/pokemonRoutes.js';
-
-const router = Router();
-
-// Mount all Pokemon routes at root
-router.use('/', pokemonRoutes);
-
-export default router;

@@ -10,6 +10,16 @@ const { baseUrl: BASE_URL } = config.pokeapi;
  * @param {number} offset - Starting position
  * @returns {Promise<Object>} - List of Pokemon with count
  */
+export const getAllPokemon = async (limit = 20, offset = 0) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/pokemon`, {
+      params: { limit, offset }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(`Failed to fetch Pokemon list: ${error.message}`);
+  }
+};
 
 /**
  * Fetch a single Pokemon by name or ID
@@ -36,6 +46,19 @@ export const getPokemonByNameOrId = async (nameOrId) => {
  * @param {string|number} nameOrId - Pokemon name or ID
  * @returns {Promise<Object|null>} - Species data or null if not found
  */
+export const getPokemonSpecies = async (nameOrId) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/pokemon-species/${nameOrId.toString().toLowerCase()}`
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 404) {
+      return null;
+    }
+    throw new Error(`Failed to fetch Pokemon species: ${error.message}`);
+  }
+};
 
 /**
  * Search Pokemon by name
@@ -95,32 +118,4 @@ export const getPokemonByType = async (typeName) => {
     throw new Error(`Failed to fetch Pokemon by type: ${error.message}`);
   }
 };
-
-
-export const getAllPokemon = async (limit = 20, offset = 0) => {
-  try {
-    const response = await axios.get(`${BASE_URL}/pokemon`, {
-      params: { limit, offset }
-    });
-    return response.data;
-  } catch (error) {
-    throw new Error(`Failed to fetch Pokemon list: ${error.message}`);
-  }
-};
-
-
-export const getPokemonSpecies = async (nameOrId) => {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/pokemon-species/${nameOrId.toString().toLowerCase()}`
-    );
-    return response.data;
-  } catch (error) {
-    if (error.response && error.response.status === 404) {
-      return null;
-    }
-    throw new Error(`Failed to fetch Pokemon species: ${error.message}`);
-  }
-};
-
 
