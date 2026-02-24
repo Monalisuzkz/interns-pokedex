@@ -31,6 +31,7 @@ export const getHomePage = async (req, res) => {
     });
   }
 };
+
 /**
  * Pokemon detail page
  */
@@ -54,6 +55,7 @@ export const getPokemonDetails = async (req, res) => {
     });
   }
 };
+
 /**
  * Search results page
  */
@@ -80,6 +82,7 @@ export const searchPokemon = async (req, res) => {
     });
   }
 };
+
 /**
  * Filter by type page
  */
@@ -110,6 +113,7 @@ export const getPokemonByType = async (req, res) => {
     });
   }
 };
+
 // ============================================
 // API CONTROLLERS (Return JSON)
 // ============================================
