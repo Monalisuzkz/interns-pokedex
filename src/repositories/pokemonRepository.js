@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { config } from '../config/index.js';
+// src/repositories/pokemonRepository.js
+import config from '../config/index.js';  // <- default import
 
 // Get the base URL from config
 const { baseUrl: BASE_URL } = config.pokeapi;

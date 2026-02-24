@@ -21,7 +21,7 @@ export const config = {
 };
 
 import { Router } from 'express';
-import pokemonRoutes from './pokemonRoutes.js';
+import pokemonRoutes from '../routes/pokemonRoutes.js';
 
 const router = Router();
 
