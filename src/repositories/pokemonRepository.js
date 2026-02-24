@@ -1,6 +1,5 @@
 import axios from 'axios';
-// src/repositories/pokemonRepository.js
-import config from '../config/index.js';  // <- default import
+import { config } from '../config/index.js';
 
 // Get the base URL from config
 const { baseUrl: BASE_URL } = config.pokeapi;
@@ -95,7 +94,7 @@ export const searchPokemon = async (query, limit = config.pagination.maxSearchLi
  */
 export const getPokemonTypes = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/type`);
+    const response = await axios.get(`${pokeapi.co/api/v2}/type`);
     return response.data.results;
   } catch (error) {
     throw new Error(`Failed to fetch Pokemon types: ${error.message}`);
